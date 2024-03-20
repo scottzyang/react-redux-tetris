@@ -12,17 +12,6 @@ code {
     monospace;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 :root {
   --bg-color: rgba(150, 150, 150, 1);
 
@@ -118,4 +107,16 @@ code {
   display: grid;
   grid-template-columns: repeat(4, var(--tile-size));
   align-self: flex-start;
+}
+
+
+/* Score Board */
+.score-board-button {
+  display: block;
+  padding: 1em;
+  border-width: 5px;
+  border-top-color: var(--button-color-t);
+  border-left-color: var(--button-color-l);
+  border-right-color: var(--button-color-r);
+  border-bottom-color: var(--button-color-b);
 }
