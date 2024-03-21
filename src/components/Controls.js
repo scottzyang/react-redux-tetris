@@ -6,6 +6,7 @@ export default function Controls(props) {
   const dispatch = useDispatch()
   const isRunning = useSelector((state) => state.isRunning)
   const speed = useSelector((state) => state.speed)
+  const gameOver = useSelector((state) => state.gameOver)
 
   const requestRef = useRef()
   const lastUpdateTimeRef = useRef(0)
@@ -38,7 +39,7 @@ export default function Controls(props) {
   <div className="controls">
     {/* left */}
     <button
-      disabled={!isRunning}
+      disabled={!isRunning || gameOver}
       className="control-button"
       onClick={(e) => {
         dispatch(moveLeft())
@@ -47,7 +48,7 @@ export default function Controls(props) {
 
     {/* right */}
     <button
-      disabled={!isRunning}
+      disabled={!isRunning || gameOver}
       className="control-button"
       onClick={(e) => {
         dispatch(moveRight())
@@ -56,7 +57,7 @@ export default function Controls(props) {
 
     {/* rotate */}
     <button
-      disabled={!isRunning}
+      disabled={!isRunning || gameOver}
       className="control-button"
       onClick={(e) => {
         dispatch(rotate())
@@ -65,7 +66,7 @@ export default function Controls(props) {
 
     {/* down */}
     <button
-      disabled={!isRunning}
+      disabled={!isRunning || gameOver}
       className="control-button"
       onClick={(e) => {
         dispatch(moveDown())
