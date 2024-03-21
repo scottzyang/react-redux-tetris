@@ -74,7 +74,7 @@ export const gameSlice = createSlice({
       }
     },
     gameOver: () => {},
-    restart: () => {}
+    restart: () => defaultState()
   },
 })
 
