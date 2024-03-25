@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(54, 4, 4);
 }
 
 code {
@@ -80,15 +81,11 @@ code {
 }
 
 /* Grid Square */
+/* Grid Square */
 .grid-square {
-  border-style: solid;
   width: var(--tile-size);
   height: var(--tile-size);
-  border-width: var(--border-width);
-  border-left-color: var(--border-left-color);
-  border-top-color: var(--border-top-color);
-  border-right-color: var(--border-right-color);
-  border-bottom-color: var(--border-bottom-color);
+  border-radius: 4px;
 }
 
 * {
@@ -96,14 +93,17 @@ code {
 }
 
 /* Score Board */
+/* Score Board */
 .score-board-button {
   display: block;
   padding: 1em;
-  border-width: 5px;
-  border-top-color: var(--button-color-t);
+  background-color: var(--color-0);
+  border: none;
+  /* border-width: 5px; */
+  /* border-top-color: var(--button-color-t);
   border-left-color: var(--button-color-l);
   border-right-color: var(--button-color-r);
-  border-bottom-color: var(--button-color-b);
+  border-bottom-color: var(--button-color-b); */
 }
 
 /* App */
@@ -134,13 +134,15 @@ code {
   grid-area: h;
 }
 
+/* Grid Board */
 .grid-board {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
   align-self: flex-start;
   grid-area: c;
-  /* Assign to grid area c */
+  grid-gap: 1px;
+  /* Add a gap! */
 }
 
 /* Next Block */
@@ -153,8 +155,11 @@ code {
 }
 
 /* score-board */
+/* score-board */
 .score-board {
   grid-area: r;
+  display: flex;
+  flex-direction: column;
 }
 
 /* controls */

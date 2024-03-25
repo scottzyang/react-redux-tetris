@@ -14,8 +14,15 @@ export default function Controls(props) {
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(update)
-    return () => cancelAnimationFrame(requestRef.current)
+    // Add event listener for keydown
+    document.addEventListener('keydown', keyDownHandler)
+    return () => {
+      cancelAnimationFrame(requestRef.current)
+      // Remove event listener when component unmounts
+      document.removeEventListener('keydown', keyDownHandler)
+    }
   }, [isRunning])
+
 
   const update = (time) => {
     requestRef.current = requestAnimationFrame(update)
@@ -32,6 +39,19 @@ export default function Controls(props) {
       progressTimeRef.current = 0
     }
     lastUpdateTimeRef.current = time
+  }
+
+  // handle key press
+  const keyDownHandler = (e) => {
+    if (e.key === "ArrowLeft") {
+      dispatch(moveLeft())
+    } else if (e.key === "ArrowRight") {
+      dispatch(moveRight())
+    } else if (e.key === "ArrowDown") {
+      dispatch(moveDown())
+    } else if (e.key === " ") {
+      dispatch(rotate())
+    }
   }
 
 
