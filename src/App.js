@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 
-import GridBoard from './components/GridBoard'
-import NextBlock from './components/NextBlock'
-import ScoreBoard from './components/ScoreBoard'
-import Controls from './components/Controls'
-import MessagePopup from './components/MessagePopup'
+import GridBoard from './components/GridBoard.js'
+import NextBlock from './components/NextBlock.js'
+import ScoreBoard from './components/ScoreBoard.js'
+import Controls from './components/Controls.js'
+import MessagePopup from './components/MessagePopup.js'
 
 function App() {
   return (

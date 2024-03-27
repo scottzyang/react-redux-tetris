@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { defaultState, canMoveTo, nextRotation, addBlockToGrid, checkRows, randomShape } from '../utils'
+import { defaultState, canMoveTo, nextRotation, addBlockToGrid, checkRows, randomShape } from '../utils/index.js'
 
 export const gameSlice = createSlice({
   name: 'game',

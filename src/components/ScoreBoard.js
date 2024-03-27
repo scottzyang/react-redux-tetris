@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { pause, resume, restart } from '../features/gameSlice'
+import { pause, resume, restart } from '../features/gameSlice.js'
 
 export default function ScoreBoard() {
   const dispatch = useDispatch()

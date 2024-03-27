@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import GridSquare from './GridSquare'
-import { shapes } from '../utils'
+import GridSquare from './GridSquare.js'
+import { shapes } from '../utils/index.js'
 
 export default function GridBoard(props) {
-  const { grid, shape, rotation, x, y, isRunning, speed } = useSelector(state => state)
+  const { grid, shape, rotation, x, y } = useSelector(state => state)
 
   const block = shapes[shape][rotation]
   const blockColor = shape

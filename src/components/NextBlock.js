@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { shapes } from '../utils/index'
-import GridSquare from './GridSquare'
+import { shapes } from '../utils/index.js'
+import GridSquare from './GridSquare.js'
 
 // Draws the "next" block view showing the next block to drop
 export default function NextBlock(props) {

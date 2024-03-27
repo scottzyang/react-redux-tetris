@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { moveDown, moveLeft, moveRight, rotate } from '../features/gameSlice'
+import { moveDown, moveLeft, moveRight, rotate } from '../features/gameSlice.js'
 
 export default function Controls(props) {
   const dispatch = useDispatch()
@@ -13,6 +13,37 @@ export default function Controls(props) {
   const progressTimeRef = useRef(0)
 
   useEffect(() => {
+
+    // handle key press
+    const keyDownHandler = (e) => {
+      if (e.key === "ArrowLeft") {
+        dispatch(moveLeft())
+      } else if (e.key === "ArrowRight") {
+        dispatch(moveRight())
+      } else if (e.key === "ArrowDown") {
+        dispatch(moveDown())
+      } else if (e.key === " ") {
+        dispatch(rotate())
+      }
+    }
+
+    const update = (time) => {
+      requestRef.current = requestAnimationFrame(update)
+      if (!isRunning) {
+        return
+      }
+      if (!lastUpdateTimeRef.current) {
+        lastUpdateTimeRef.current = time
+      }
+      const deltaTime = time - lastUpdateTimeRef.current
+      progressTimeRef.current += deltaTime
+      if (progressTimeRef.current > speed) {
+        dispatch(moveDown())
+        progressTimeRef.current = 0
+      }
+      lastUpdateTimeRef.current = time
+    }
+
     requestRef.current = requestAnimationFrame(update)
     // Add event listener for keydown
     document.addEventListener('keydown', keyDownHandler)
@@ -21,38 +52,9 @@ export default function Controls(props) {
       // Remove event listener when component unmounts
       document.removeEventListener('keydown', keyDownHandler)
     }
-  }, [isRunning])
+  }, [isRunning, dispatch, speed])
 
 
-  const update = (time) => {
-    requestRef.current = requestAnimationFrame(update)
-    if (!isRunning) {
-      return
-    }
-    if (!lastUpdateTimeRef.current) {
-      lastUpdateTimeRef.current = time
-    }
-    const deltaTime = time - lastUpdateTimeRef.current
-    progressTimeRef.current += deltaTime
-    if (progressTimeRef.current > speed) {
-      dispatch(moveDown())
-      progressTimeRef.current = 0
-    }
-    lastUpdateTimeRef.current = time
-  }
-
-  // handle key press
-  const keyDownHandler = (e) => {
-    if (e.key === "ArrowLeft") {
-      dispatch(moveLeft())
-    } else if (e.key === "ArrowRight") {
-      dispatch(moveRight())
-    } else if (e.key === "ArrowDown") {
-      dispatch(moveDown())
-    } else if (e.key === " ") {
-      dispatch(rotate())
-    }
-  }
 
 
   return (
