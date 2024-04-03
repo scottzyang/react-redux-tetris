@@ -167,6 +167,8 @@ code {
   grid-area: b;
   display: flex;
   flex-direction: row;
+  gap: 6px;
+  /* Adjust the gap as needed */
 }
 
 /* Control Button */

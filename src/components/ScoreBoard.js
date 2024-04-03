@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { pause, resume, restart } from '../features/gameSlice.js'
 
@@ -7,6 +7,25 @@ export default function ScoreBoard() {
   const score = useSelector((state) => state.score)
   const gameOver = useSelector((state) => state.gameOver)
   const isRunning = useSelector((state) => state.isRunning)
+
+  useEffect(() => {
+    const keyDownHandler = (e) => {
+      if (e.key === "p") {
+        if (isRunning) {
+          dispatch(pause())
+        } else {
+          dispatch(resume())
+        }
+      } else if (e.key === "r") {
+        dispatch(restart())
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler)
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler)
+    }
+  }, [score, gameOver, isRunning, dispatch])
 
   return (
     <div className="score-board">

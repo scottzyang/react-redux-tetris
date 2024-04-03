@@ -6,11 +6,12 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 900,
+    width: 500,
     height: 680,
     webPreferences: {
       nodeIntegration: true
-  }
+  },
+  resizable: false,
 });
  mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   if (isDev) {

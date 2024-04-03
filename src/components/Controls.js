@@ -16,11 +16,11 @@ export default function Controls(props) {
 
     // handle key press
     const keyDownHandler = (e) => {
-      if (e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft" || e.key === "a") {
         dispatch(moveLeft())
-      } else if (e.key === "ArrowRight") {
+      } else if (e.key === "ArrowRight" || e.key === "d") {
         dispatch(moveRight())
-      } else if (e.key === "ArrowDown") {
+      } else if (e.key === "ArrowDown" || e.key === "s") {
         dispatch(moveDown())
       } else if (e.key === " ") {
         dispatch(rotate())
@@ -94,7 +94,6 @@ export default function Controls(props) {
         dispatch(moveDown())
       }
     }>Down</button>
-
   </div>
   )
 }
